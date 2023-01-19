@@ -1,0 +1,22 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+
+version: '3'
+
+# Define services
+services:
+  'bot':
+    #environment:
+    #  - WEB3_PROVIDER_URI=${WEB3_PROVIDER_URI}
+    #  - PRIVATE_KEY=${PRIVATE_KEY}
+    #  - PRIVATE_KEY2=${PRIVATE_KEY2}
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../.env:/.env:ro
+      - ../scripts/bot.py:/app.py:ro
+      - ../build/deployments/map.json:/build/deployments/map.json:ro
+      - ../build/contracts/Random.json:/build/contracts/Random.json:ro
+    command: python /app.py
+
+

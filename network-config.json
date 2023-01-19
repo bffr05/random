@@ -1,0 +1,26 @@
+{
+  "live": [
+    {
+      "name": "Ethereum",
+      "networks": [
+        {
+          "chainid": 9997,
+          "host": "http://172.22.16.240:9997",
+          "id": "n9997",
+          "name": "n9997"
+        }
+      ]
+    },
+    {
+      "name": "Ethereum",
+      "networks": [
+        {
+          "chainid": 9998,
+          "host": "http://172.22.16.240:9998",
+          "id": "n9998",
+          "name": "n9998"
+        }
+      ]
+    }
+  ]
+}
