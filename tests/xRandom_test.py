@@ -26,7 +26,6 @@ def extraaccount():
 
 def test_deploy():
     main()
-    xRandom.deploy({"from": mainaccount()})
 
 def test_add():
     lst = []

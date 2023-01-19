@@ -117,69 +117,68 @@ def main():
     TestAccess = True
 
     if True: ##len(Access) ==0 or ILocator.get(kAccess) != Access[-1]:
-        addr = mycontracts.Access.deploy({"from": mainaccount()}).address
+        addr = mycontracts.Access.deploy({"from": mainaccount()})
         ILocator.set(kAccess,addr,{"from": mainaccount()})
 
         if nolocator:
-            interface.ILocation(addr).setLocator(myLocator,{"from": mainaccount()}) ## mycontracts.interface.ILocation(addr).setLocator(myLocator,{"from": mainaccount()})
-            assert(interface.ILocation(addr).locator()==myLocator)
+            addr.setLocator(myLocator,{"from": mainaccount()}) ## mycontracts.addr.setLocator(myLocator,{"from": mainaccount()})
+            assert(addr.locator()==myLocator)
         else:
-            assert(interface.ILocation(addr).locator()==LocatorAddress)
+            assert(addr.locator()==LocatorAddress)
 
         if TestAccess:
-            interface.IOperatorable(addr).setOperator(LocatorAddress,True,{"from": mainaccount()})
-            assert(interface.IOperatorable(addr).isOperator(mainaccount(),LocatorAddress))
+            addr.setOperator(LocatorAddress,True,{"from": mainaccount()})
+            assert(addr.isOperator(mainaccount(),LocatorAddress))
     updatemapjson(str(network.web3.chain_id),"Access",ILocator.get['bytes32'](kAccess))
 
     if True: ##len(Random) ==0 or ILocator.get(kRandom) != Random[-1]:
-        addr = Random.deploy({"from": mainaccount()}).address
+        addr = Random.deploy({"from": mainaccount()})
         ILocator.set(kRandom,addr,{"from": mainaccount()})
         ##isTrusted
         if nolocator:
-            interface.ILocation(addr).setLocator(myLocator,{"from": mainaccount()}) ## mycontracts.interface.ILocation(addr).setLocator(myLocator,{"from": mainaccount()})
-            assert(interface.ILocation(addr).locator()==myLocator)
+            addr.setLocator(myLocator,{"from": mainaccount()}) ## mycontracts.addr.setLocator(myLocator,{"from": mainaccount()})
+            assert(addr.locator()==myLocator)
         else:
-            assert(interface.ILocation(addr).locator()==LocatorAddress)
+            assert(addr.locator()==LocatorAddress)
 
-        assert(interface.IReferral(addr).referral()==ILocator.location(kAccess))
-
+        assert(addr.referral()==ILocator.location(kAccess))
         if TestAccess:
-            assert(not interface.IOperatorable(addr).isOperator(mainaccount(),LocatorAddress))
-            interface.IOperatorable(addr).setOperator(LocatorAddress,True,{"from": mainaccount()})
-            assert(interface.IOperatorable(addr).isOperator(mainaccount(),LocatorAddress))
-            interface.IOperatorable(addr).setOperator(LocatorAddress,False,{"from": mainaccount()})
-            assert(not interface.IOperatorable(addr).isOperator(mainaccount(),LocatorAddress))
+            assert(not addr.isOperator(mainaccount(),LocatorAddress))
+            addr.setOperator(LocatorAddress,True,{"from": mainaccount()})
+            assert(addr.isOperator(mainaccount(),LocatorAddress))
+            addr.setOperator(LocatorAddress,False,{"from": mainaccount()})
+            assert(not addr.isOperator(mainaccount(),LocatorAddress))
 
         interface.IRTrustable(ILocator.location(kAccess)).setContract(addr,True,{"from": mainaccount()}) ## mycontracts.interface.IRTrustable(ILocator.location(ILocator.hash("Access"))).setContract(addr,True,{"from": mainaccount()})
 
         if TestAccess:
-            assert(interface.IOperatorable(addr).isOperator(mainaccount(),LocatorAddress))
-    ##updatemapjson(str(network.web3.chain_id),"Random",ILocator.get['bytes32'](kRandom))
+            assert(addr.isOperator(mainaccount(),LocatorAddress))
+    updatemapjson(str(network.web3.chain_id),"Random",ILocator.get['bytes32'](kRandom))
 
 
     if True: ##len(xRandom) ==0 or ILocator.get(kRandom) != xRandom[-1]:
-        addr = xRandom.deploy({"from": mainaccount()}).address
+        addr = xRandom.deploy({"from": mainaccount()})
         ILocator.set(kRandom,addr,{"from": mainaccount()})
         ##isTrusted
         if nolocator:
-            interface.ILocation(addr).setLocator(myLocator,{"from": mainaccount()}) ## mycontracts.interface.ILocation(addr).setLocator(myLocator,{"from": mainaccount()})
-            assert(interface.ILocation(addr).locator()==myLocator)
+            addr.setLocator(myLocator,{"from": mainaccount()}) ## mycontracts.addr.setLocator(myLocator,{"from": mainaccount()})
+            assert(addr.locator()==myLocator)
         else:
-            assert(interface.ILocation(addr).locator()==LocatorAddress)
+            assert(addr.locator()==LocatorAddress)
 
-        assert(interface.IReferral(addr).referral()==ILocator.location(kAccess))
+        assert(addr.referral()==ILocator.location(kAccess))
 
         if TestAccess:
-            assert(not interface.IOperatorable(addr).isOperator(mainaccount(),LocatorAddress))
-            interface.IOperatorable(addr).setOperator(LocatorAddress,True,{"from": mainaccount()})
-            assert(interface.IOperatorable(addr).isOperator(mainaccount(),LocatorAddress))
-            interface.IOperatorable(addr).setOperator(LocatorAddress,False,{"from": mainaccount()})
-            assert(not interface.IOperatorable(addr).isOperator(mainaccount(),LocatorAddress))
+            assert(not addr.isOperator(mainaccount(),LocatorAddress))
+            addr.setOperator(LocatorAddress,True,{"from": mainaccount()})
+            assert(addr.isOperator(mainaccount(),LocatorAddress))
+            addr.setOperator(LocatorAddress,False,{"from": mainaccount()})
+            assert(not addr.isOperator(mainaccount(),LocatorAddress))
 
         interface.IRTrustable(ILocator.location(kAccess)).setContract(addr,True,{"from": mainaccount()}) ## mycontracts.interface.IRTrustable(ILocator.location(ILocator.hash("Access"))).setContract(addr,True,{"from": mainaccount()})
 
         if TestAccess:
-            assert(interface.IOperatorable(addr).isOperator(mainaccount(),LocatorAddress))
-    updatemapjson(str(network.web3.chain_id),"Random",ILocator.get['bytes32'](kRandom))
+            assert(addr.isOperator(mainaccount(),LocatorAddress))
+    updatemapjson(str(network.web3.chain_id),"xRandom",ILocator.get['bytes32'](kRandom))
 
     time.sleep(0.5)
